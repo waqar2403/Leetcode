@@ -15,6 +15,7 @@ public:
                rMin = min(rMin,matrix[i][j]); 
             }
             rowMin.push_back(rMin);
+            cout<<rMin;
         }
         for(int i=0;i<cols;i++)
         {
@@ -22,14 +23,16 @@ public:
             for(int j=0;j<rows;j++)
             {
               cMax = max(cMax,matrix[j][i]); 
+              
             }
             colMax.push_back(cMax);
+            cout<<cMax;
         }
         for(int i=0;i<rows;i++)
         {
             for(int j=0;j<cols;j++)
             {
-                if(matrix[i][j] == rowMin[i] && matrix[i][j] == colMax[j])
+                if(rowMin[i] == colMax[j])
                 {
                     lucky.push_back(matrix[i][j]);
                 }
