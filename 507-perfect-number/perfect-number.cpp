@@ -1,22 +1,21 @@
 class Solution {
 public:
-    bool checkPerfectNumber(int num) {
-        if(num == 1) return false;
-        vector<int> div;
-        div.push_back(1);
-        bool ans = false;
-        int sum =1;
-        for(int i=2;i<num;i++)
+    bool checkPerfectNumber(int num) 
+    {
+        if(num==1) return false;
+        vector<int>all_divisor;
+        for(int i=2;i*i<=num;i++)
         {
-            if(num%i ==0)
+            if(num%i==0)
             {
-                sum += i;
+                all_divisor.push_back(i);
+                if(num/i != i)
+                    all_divisor.push_back(num/i);
             }
         }
-        if(sum == num)
-        {
-            ans = true;
-        }
-        return ans;
+        int sum = 1;
+        for(int val:all_divisor)
+            sum += val;
+        return sum == num;
     }
 };
