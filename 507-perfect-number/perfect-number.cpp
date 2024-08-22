@@ -5,17 +5,13 @@ public:
         vector<int> div;
         div.push_back(1);
         bool ans = false;
+        int sum =1;
         for(int i=2;i<num;i++)
         {
             if(num%i ==0)
             {
-                div.push_back(i);
+                sum += i;
             }
-        }
-        int sum =0;
-        for(int i=0;i<div.size();i++)
-        {
-            sum+=div[i];
         }
         if(sum == num)
         {
