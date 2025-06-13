@@ -7,9 +7,7 @@ public:
         vector<int> suffix(n); suffix[n-1] = nums[n-1];
         for(int i = 1; i < n; i++){
             prefix[i] = prefix[i-1]*nums[i];
-        }
-        for(int i = n-2; i >= 0; i--){
-            suffix[i] = suffix[i+1]*nums[i];
+            suffix[n-i-1] = suffix[n-i]*nums[n-i-1];
         }
         for(int i = 0; i < n; i++){
             if(i == 0)
