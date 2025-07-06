@@ -1,20 +1,23 @@
-#include <cmath>
 class Solution {
 public:
     long long minimumRemoval(vector<int>& beans) {
-    sort(beans.begin(),beans.end());
-    long long n=beans.size(); 
-    long long curr=0;
-    long long sum = accumulate(beans.begin(),beans.end(),0LL);
-    long long ans=sum;
+        sort(beans.begin(), beans.end());
+        int n = beans.size();
+        
+        long long totalSum = 0;
+        for (int b : beans)
+            totalSum += b;
 
-    for(int i=0;i<n;i++){
-        long long diff = abs(beans[i]-curr);
-        sum -= diff*(n-i);
-        ans = min(ans,sum) ;
-        sum += beans[i];
-        curr = beans[i];
-    }
-    return ans;
+        long long minRemoval = totalSum;
+
+        for (long long i = 0; i < n; ++i) {
+            // Assume beans[i] is the target value
+            // All beans[j] where j >= i will be reduced to beans[i]
+            // All beans[j] where j < i will be completely removed
+            long long removals = totalSum - beans[i] * (n - i);
+            minRemoval = min(minRemoval, removals);
+        }
+
+        return minRemoval;
     }
 };
