@@ -17,10 +17,6 @@ public:
     bool isSubsequence(string s1, string s2) {
         int m = s1.size();
         int n = s2.size();
-        
-        if(m >  n)
-            return false;
-        
         vector<vector<int>> t(m+1,vector<int> (n+1,-1));
     
         if(isSubs(s1,s2,m,n,t) == m)
