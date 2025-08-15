@@ -5,7 +5,12 @@ public:
         if(n==0){return res;}
 
         for(int i=1;i<=n;i++){
-            res[i]  = __builtin_popcount(i);
+            if(i%2 ==1){
+                res[i] = res[i/2]+1;
+            }
+            else {
+                res[i] = res[i/2];
+            }
         }
         return res;
     }
