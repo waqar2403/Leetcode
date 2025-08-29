@@ -1,8 +1,6 @@
 class Solution {
 public:
     int lastStoneWeight(vector<int>& stones) {
-        if (stones.empty()) return 0;
-
         sort(stones.begin(), stones.end());          
         while (stones.size() > 1) {                  
             int a = stones.back(); stones.pop_back(); 
