@@ -11,8 +11,13 @@
 class Solution {
 public:
     ListNode* removeElements(ListNode* head, int val) {
-    if (head == nullptr) return nullptr;
-    head->next = removeElements(head->next, val);
-    return head->val == val ? head->next : head;
-}
+                // base case: ran off the end of the list
+        if (head == nullptr) {
+            return nullptr;
+        }
+        // trust this call to clean up everything after head
+        head->next = removeElements(head->next, val);
+        // now THIS node decides: keep myself, or hand back only what's after me
+        return head->val == val ? head->next : head;
+    }
 };
